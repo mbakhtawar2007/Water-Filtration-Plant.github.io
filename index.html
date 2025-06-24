@@ -5,36 +5,46 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Aabe Hasher - Premium Water Delivery</title>
+    <meta name="description"
+        content="Premium water delivery service with pure, refreshing water delivered to your doorstep in Mogadishu, Somalia">
+    <meta name="keywords" content="water delivery, premium water, bottled water, water dispenser, Mogadishu, Somalia">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="./css/style.css">
-    <!-- Only style.css is needed; it imports all modular CSS files -->
-    <!-- Removed redundant direct links to header.css, modal.css, forms.css, sections.css -->
+    <link rel="stylesheet" href="./css/header.css">
+    <link rel="stylesheet" href="./css/hero.css">
+    <link rel="stylesheet" href="./css/about.css">
+    <link rel="stylesheet" href="./css/services.css">
+    <link rel="stylesheet" href="./css/testimonials.css">
+    <link rel="stylesheet" href="./css/contact.css">
+    <link rel="stylesheet" href="./css/footer.css">
+    <link rel="stylesheet" href="./css/modal.css">
 </head>
 
 <body>
     <!-- Header -->
     <header>
-        <nav class="navbar">
+        <nav class="navbar container">
             <a href="#" class="logo">
                 <i class="fas fa-tint logo-icon"></i>
                 <span class="logo-text">Aabe Hasher</span>
-           
+            </a>
 
             <ul class="nav-links">
-                <li><a href="#" class="nav-link">Home</a></li>
+                <li><a href="#hero" class="nav-link">Home</a></li>
                 <li><a href="#about" class="nav-link">About</a></li>
                 <li><a href="#services" class="nav-link">Services</a></li>
                 <li><a href="#testimonials" class="nav-link">Testimonials</a></li>
                 <li><a href="#contact" class="nav-link">Contact</a></li>
             </ul>
 
+            <div class="navbar-auth">
+                <button class="btn btn-outline" id="adminLoginBtn">Admin Login</button>
+                <button class="btn" id="clientLoginBtn">Client Login</button>
+            </div>
+
             <button class="mobile-toggle">
                 <i class="fas fa-bars"></i>
             </button>
-            <div class="navbar-auth">
-                <button class="btn btn-outline" id="adminLoginBtn">Login as Admin</button>
-                <button class="btn" id="clientLoginBtn">Login as Client/User</button>
-            </div>
         </nav>
     </header>
 
@@ -101,14 +111,14 @@
     </div>
 
     <!-- Hero Section -->
-    <section class="hero">
+    <section class="hero" id="hero">
         <div class="hero-content">
-            <h1 class="hero-title">Premium Water Delivery Service</h1>
-            <p class="hero-subtitle">Pure, refreshing water delivered to your doorstep. Experience the difference with
-                Aabe Hasher's premium water solutions.</p>
+            <h1 class="hero-title animate-on-scroll">Premium Water Delivery Service</h1>
+            <p class="hero-subtitle animate-on-scroll">Pure, refreshing water delivered to your doorstep. Experience the
+                difference with Aabe Hasher's premium water solutions.</p>
             <div class="hero-btns">
-                <a href="#services" class="btn">Our Services</a>
-                <a href="#contact" class="btn btn-outline">Contact Us</a>
+                <a href="#services" class="btn btn-accent animate-on-scroll">Our Services</a>
+                <a href="#contact" class="btn btn-outline animate-on-scroll">Contact Us</a>
             </div>
         </div>
     </section>
@@ -119,20 +129,21 @@
         <section id="about" class="section">
             <h2 class="section-title">About Aabe Hasher</h2>
             <div class="about-content">
-                <div class="about-image">
+                <div class="about-image animate-on-scroll">
                     <img src="https://images.unsplash.com/photo-1523987355523-c7b5b0dd90a7?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1770&q=80"
                         alt="Water purification process">
                 </div>
                 <div class="about-text">
-                    <h3>Your Trusted Water Provider Since 2010</h3>
-                    <p>Aabe Hasher has been providing premium quality drinking water to homes and businesses for over a
-                        decade. Our mission is simple: to deliver the purest, most refreshing water while providing
-                        exceptional customer service.</p>
-                    <p>We source our water from protected natural springs and use state-of-the-art purification
-                        technology to ensure every drop meets the highest quality standards.</p>
+                    <h3 class="animate-on-scroll">Your Trusted Water Provider Since 2010</h3>
+                    <p class="animate-on-scroll">Aabe Hasher has been providing premium quality drinking water to homes
+                        and businesses for over a decade. Our mission is simple: to deliver the purest, most refreshing
+                        water while providing exceptional customer service.</p>
+                    <p class="animate-on-scroll">We source our water from protected natural springs and use
+                        state-of-the-art purification technology to ensure every drop meets the highest quality
+                        standards.</p>
 
                     <div class="features">
-                        <div class="feature">
+                        <div class="feature animate-on-scroll">
                             <div class="feature-icon">
                                 <i class="fas fa-check-circle"></i>
                             </div>
@@ -141,7 +152,7 @@
                                 <p>Rigorous testing and purification processes</p>
                             </div>
                         </div>
-                        <div class="feature">
+                        <div class="feature animate-on-scroll">
                             <div class="feature-icon">
                                 <i class="fas fa-truck"></i>
                             </div>
@@ -150,7 +161,7 @@
                                 <p>On-time delivery to your doorstep</p>
                             </div>
                         </div>
-                        <div class="feature">
+                        <div class="feature animate-on-scroll">
                             <div class="feature-icon">
                                 <i class="fas fa-recycle"></i>
                             </div>
@@ -159,7 +170,7 @@
                                 <p>Bottle recycling program</p>
                             </div>
                         </div>
-                        <div class="feature">
+                        <div class="feature animate-on-scroll">
                             <div class="feature-icon">
                                 <i class="fas fa-headset"></i>
                             </div>
@@ -178,7 +189,7 @@
             <h2 class="section-title">Our Services</h2>
             <div class="services">
                 <div class="services-grid">
-                    <div class="service-card">
+                    <div class="service-card animate-on-scroll">
                         <div class="service-img">
                             <img src="https://images.unsplash.com/photo-1603561598010-1cf5e0580e17?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1770&q=80"
                                 alt="Home Delivery">
@@ -192,7 +203,7 @@
                         </div>
                     </div>
 
-                    <div class="service-card">
+                    <div class="service-card animate-on-scroll">
                         <div class="service-img">
                             <img src="https://images.unsplash.com/photo-1556911220-ef412ae179a9?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1770&q=80"
                                 alt="Office Supply">
@@ -206,7 +217,7 @@
                         </div>
                     </div>
 
-                    <div class="service-card">
+                    <div class="service-card animate-on-scroll">
                         <div class="service-img">
                             <img src="https://images.unsplash.com/photo-1563642421748-5047b6585a4a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1770&q=80"
                                 alt="Water Dispensers">
@@ -223,10 +234,10 @@
         </section>
 
         <!-- Testimonials Section -->
-        <section id="testimonials" class="section">
+        <section id="testimonials" class="section testimonials">
             <h2 class="section-title">What Our Customers Say</h2>
             <div class="testimonials-grid">
-                <div class="testimonial-card">
+                <div class="testimonial-card animate-on-scroll">
                     <p class="testimonial-text">Aabe Hasher has been our water provider for over 3 years. Their service
                         is reliable and the water quality is exceptional. Highly recommended!</p>
                     <div class="testimonial-author">
@@ -240,7 +251,7 @@
                     </div>
                 </div>
 
-                <div class="testimonial-card">
+                <div class="testimonial-card animate-on-scroll">
                     <p class="testimonial-text">We switched to Aabe Hasher for our office water supply and couldn't be
                         happier. The delivery is always on time and their customer service is excellent.</p>
                     <div class="testimonial-author">
@@ -254,7 +265,7 @@
                     </div>
                 </div>
 
-                <div class="testimonial-card">
+                <div class="testimonial-card animate-on-scroll">
                     <p class="testimonial-text">The taste of Aabe Hasher water is noticeably better than other brands
                         we've tried. Their eco-friendly bottle exchange program is also a big plus for us.</p>
                     <div class="testimonial-author">
@@ -274,7 +285,7 @@
         <section id="contact" class="section">
             <h2 class="section-title">Contact Us</h2>
             <div class="contact">
-                <div class="contact-info">
+                <div class="contact-info animate-on-scroll">
                     <h3 class="contact-title">Get in Touch</h3>
 
                     <div class="contact-detail">
@@ -318,7 +329,7 @@
                     </div>
                 </div>
 
-                <div class="contact-form">
+                <div class="contact-form animate-on-scroll">
                     <h3 class="contact-title">Send a Message</h3>
                     <form id="contactForm">
                         <div class="form-group">
@@ -403,10 +414,8 @@
         </div>
     </footer>
 
-    <script src="script.js" defer></script>
-    <script defer src="js/nav.js"></script>
-    <script defer src="js/modal.js"></script>
-    <script defer src="js/forms.js"></script>
+
+    <script src="script.js"></script>
 </body>
 
 </html>

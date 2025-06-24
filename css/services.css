@@ -1,0 +1,185 @@
+/* Services Section */
+.services-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+}
+
+.service-card {
+    background: white;
+    border-radius: var(--border-radius);
+    overflow: hidden;
+    box-shadow: var(--shadow);
+    transition: var(--transition);
+}
+
+.service-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+}
+
+.service-img {
+    height: 200px;
+    overflow: hidden;
+}
+
+.service-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: var(--transition);
+}
+
+.service-card:hover .service-img img {
+    transform: scale(1.1);
+}
+
+.service-content {
+    padding: 1.5rem;
+}
+
+.service-title {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+    color: var(--primary-dark);
+}
+
+.service-price {
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: var(--primary);
+    margin: 1rem 0;
+}
+
+.service-price span {
+    font-size: 1rem;
+    font-weight: normal;
+    color: var(--gray);
+}
+
+/* Responsive Media Queries */
+
+/* Mobile Devices – 320px — 480px */
+@media (max-width: 480px) {
+    .services-grid {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+        padding: 0 1rem;
+    }
+    .service-img {
+        height: 140px;
+    }
+    .service-content {
+        padding: 1rem;
+    }
+    .service-title {
+        font-size: 1.1rem;
+    }
+    .service-price {
+        font-size: 1.2rem;
+        margin: 0.7rem 0;
+    }
+    .service-price span {
+        font-size: 0.9rem;
+    }
+}
+
+/* iPads and Tablets – 481px — 768px */
+@media (min-width: 481px) and (max-width: 768px) {
+    .services-grid {
+        grid-template-columns: 1fr 1fr;
+        gap: 1.2rem;
+        padding: 0 2rem;
+    }
+    .service-img {
+        height: 160px;
+    }
+    .service-content {
+        padding: 1.2rem;
+    }
+    .service-title {
+        font-size: 1.2rem;
+    }
+    .service-price {
+        font-size: 1.4rem;
+        margin: 0.8rem 0;
+    }
+    .service-price span {
+        font-size: 0.95rem;
+    }
+}
+
+/* Laptops and small screen – 769px — 1024px */
+@media (min-width: 769px) and (max-width: 1024px) {
+    .services-grid {
+        grid-template-columns: 1fr 1fr 1fr;
+        gap: 1.5rem;
+        padding: 0 3rem;
+    }
+    .service-img {
+        height: 180px;
+    }
+    .service-content {
+        padding: 1.3rem;
+    }
+    .service-title {
+        font-size: 1.3rem;
+    }
+    .service-price {
+        font-size: 1.6rem;
+        margin: 0.9rem 0;
+    }
+    .service-price span {
+        font-size: 1rem;
+    }
+}
+
+/* Large screens and Desktops – 1025px — 1200px */
+@media (min-width: 1025px) and (max-width: 1200px) {
+    .services-grid {
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 2rem;
+        padding: 0 5rem;
+    }
+    .service-img {
+        height: 200px;
+    }
+    .service-content {
+        padding: 1.5rem;
+    }
+    .service-title {
+        font-size: 1.5rem;
+    }
+    .service-price {
+        font-size: 1.8rem;
+        margin: 1rem 0;
+    }
+    .service-price span {
+        font-size: 1rem;
+    }
+}
+
+/* TV and Extra Large Screens – 1201px and more */
+@media (min-width: 1201px) {
+    .services-grid {
+        grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+        gap: 2.5rem;
+        padding: 0 10rem;
+    }
+    .service-img {
+        height: 240px;
+    }
+    .service-content {
+        padding: 2rem;
+    }
+    .service-title {
+        font-size: 1.7rem;
+    }
+    .service-price {
+        font-size: 2rem;
+        margin: 1.2rem 0;
+    }
+    .service-price span {
+        font-size: 1.1rem;
+    }
+}

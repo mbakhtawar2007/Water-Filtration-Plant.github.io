@@ -1,37 +1,263 @@
-/* style.css: General use CSS and imports for modular files */
-
-@import url('./header.css');
-@import url('./modal.css');
-@import url('./forms.css');
-@import url('./sections.css');  
-@import url('./base.css');
-
-/* General use CSS */
+/* CSS Variables for consistent theming */
 :root {
-    --primary: #3498db;
-    --primary-dark: #2980b9;
-    --secondary: #2c3e50;
-    --light-blue: #e1f5fe;
-    --white: #ffffff;
+    --primary: #1a73e8;
+    --primary-dark: #0d47a1;
+    --secondary: #00bcd4;
+    --accent: #ff9800;
     --light: #f8f9fa;
-    --dark: #343a40;
-    --gray: #6c757d;
-    --light-gray: #e9ecef;
-    --border-radius: 10px;
-    --shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+    --dark: #212121;
+    --gray: #757575;
+    --light-gray: #e0e0e0;
+    --success: #4caf50;
+    --error: #f44336;
+    --shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
     --transition: all 0.3s ease;
+    --border-radius: 8px;
 }
 
+/* Reset and Base Styles */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 body {
-    background: linear-gradient(135deg, #f5f7fa 0%, #e4edf5 100%);
-    color: var(--dark);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     line-height: 1.6;
+    color: var(--dark);
+    background-color: #f5f7fa;
     overflow-x: hidden;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+ul {
+    list-style: none;
+}
+
+img {
+    max-width: 100%;
+    display: block;
+}
+
+.container {
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.section {
+    padding: 5rem 0;
+}
+
+.section-title {
+    text-align: center;
+    font-size: 2.5rem;
+    margin-bottom: 3rem;
+    color: var(--primary-dark);
+    position: relative;
+}
+
+.section-title::after {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80px;
+    height: 4px;
+    background: var(--secondary);
+    border-radius: 2px;
+}
+
+.btn {
+    display: inline-block;
+    padding: 0.8rem 1.8rem;
+    background: var(--primary);
+    color: white;
+    border: none;
+    border-radius: var(--border-radius);
+    cursor: pointer;
+    font-weight: 600;
+    transition: var(--transition);
+    text-align: center;
+    font-size: 1rem;
+}
+
+.btn:hover {
+    background: var(--primary-dark);
+    transform: translateY(-3px);
+    box-shadow: var(--shadow);
+}
+
+.btn-outline {
+    background: transparent;
+    border: 2px solid var(--primary);
+    color: var(--primary);
+}
+
+.btn-outline:hover {
+    background: var(--primary);
+    color: white;
+}
+
+.btn-accent {
+    background: var(--accent);
+}
+
+.btn-accent:hover {
+    background: #e68a00;
+}
+
+/* Responsive Design */
+@media (max-width: 992px) {
+    .hero-title {
+        font-size: 3rem;
+    }
+
+    .about-content {
+        grid-template-columns: 1fr;
+    }
+
+    .contact {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 768px) {
+
+    .nav-links,
+    .navbar-auth {
+        display: none;
+    }
+
+    .mobile-toggle {
+        display: block;
+    }
+
+    .hero-title {
+        font-size: 2.5rem;
+    }
+
+    .hero-subtitle {
+        font-size: 1.2rem;
+    }
+
+    .hero-btns {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .features {
+        grid-template-columns: 1fr;
+    }
+
+    .section-title {
+        font-size: 2rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .hero-title {
+        font-size: 2rem;
+    }
+
+    .section {
+        padding: 3rem 0;
+    }
+}
+
+/* Additional Responsive Media Queries for All Devices */
+
+/* Mobile Devices – 320px — 480px */
+@media (max-width: 480px) {
+    .container {
+        width: 98%;
+        padding: 0 0.5rem;
+    }
+    .section-title {
+        font-size: 1.3rem;
+    }
+    .btn {
+        padding: 0.6rem 1.2rem;
+        font-size: 0.95rem;
+    }
+}
+
+/* iPads and Tablets – 481px — 768px */
+@media (min-width: 481px) and (max-width: 768px) {
+    .container {
+        width: 95%;
+        padding: 0 1rem;
+    }
+    .section-title {
+        font-size: 1.7rem;
+    }
+    .btn {
+        padding: 0.7rem 1.5rem;
+        font-size: 1rem;
+    }
+}
+
+/* Laptops and small screen – 769px — 1024px */
+@media (min-width: 769px) and (max-width: 1024px) {
+    .container {
+        width: 92%;
+        padding: 0 2rem;
+    }
+    .section-title {
+        font-size: 2.2rem;
+    }
+    .btn {
+        padding: 0.8rem 1.7rem;
+        font-size: 1.05rem;
+    }
+}
+
+/* Large screens and Desktops – 1025px — 1200px */
+@media (min-width: 1025px) and (max-width: 1200px) {
+    .container {
+        width: 90%;
+        max-width: 1200px;
+        padding: 0 3rem;
+    }
+    .section-title {
+        font-size: 2.5rem;
+    }
+    .btn {
+        padding: 0.8rem 1.8rem;
+        font-size: 1.1rem;
+    }
+}
+
+/* TV and Extra Large Screens – 1201px and more */
+@media (min-width: 1201px) {
+    .container {
+        width: 85%;
+        max-width: 1600px;
+        padding: 0 6rem;
+    }
+    .section-title {
+        font-size: 3rem;
+    }
+    .btn {
+        padding: 1rem 2.2rem;
+        font-size: 1.2rem;
+    }
+}
+
+/* Animation Utilities */
+.animate-on-scroll {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+.animate-on-scroll.visible {
+    opacity: 1;
+    transform: translateY(0);
 }
