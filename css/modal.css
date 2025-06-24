@@ -1,4 +1,4 @@
-   /* Modal Styles */
+/* Modal Styles */
         .modal {
             display: none;
             position: fixed;
@@ -57,4 +57,19 @@
             display: flex;
             margin-bottom: 1.5rem;
             gap: 1rem;
+        }
+
+        /* Responsive Modal */
+        @media (max-width: 600px) {
+            .modal-content {
+                padding: 1rem;
+                max-width: 95vw;
+            }
+            .modal h2 {
+                font-size: 1.1rem;
+            }
+            #clientModalTabs {
+                flex-direction: column;
+                gap: 0.5rem;
+            }
         }

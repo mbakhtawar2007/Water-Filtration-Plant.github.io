@@ -1,4 +1,4 @@
-      /* Contact Section */
+/* Contact Section */
         .contact {
             display: grid;
             grid-template-columns: 1fr 1fr;
@@ -83,4 +83,28 @@
         .form-textarea {
             min-height: 150px;
             resize: vertical;
+        }
+
+        /* Responsive Contact Section */
+        @media (max-width: 992px) {
+            .contact {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+            .contact-info, .contact-form {
+                padding: 1.5rem;
+            }
+        }
+        @media (max-width: 768px) {
+            .contact-info, .contact-form {
+                padding: 1rem;
+            }
+        }
+        @media (max-width: 480px) {
+            .contact-title {
+                font-size: 1.1rem;
+            }
+            .contact-info, .contact-form {
+                padding: 0.5rem;
+            }
         }

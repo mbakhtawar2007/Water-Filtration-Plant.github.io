@@ -1,4 +1,4 @@
-       /* Services Section */
+/* Services Section */
         .services-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -55,4 +55,34 @@
             font-size: 1rem;
             font-weight: normal;
             color: var(--gray);
+        }
+
+        /* Responsive Services Section */
+        @media (max-width: 992px) {
+            .services-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+        @media (max-width: 768px) {
+            .services-grid {
+                grid-template-columns: 1fr;
+                gap: 1.2rem;
+            }
+            .service-img {
+                height: 160px;
+            }
+            .service-content {
+                padding: 1rem;
+            }
+        }
+        @media (max-width: 480px) {
+            .service-title {
+                font-size: 1.1rem;
+            }
+            .service-price {
+                font-size: 1.2rem;
+            }
+            .service-img {
+                height: 120px;
+            }
         }
