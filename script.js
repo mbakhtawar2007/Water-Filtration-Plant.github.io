@@ -1,6 +1,6 @@
-        // Modal functionality
-        const adminLoginBtn = document.getElementById('adminLoginBtn');
-        const clientLoginBtn = document.getElementById('clientLoginBtn');
+// Modal functionality
+        const adminLoginBtn = document.getElementById('adminLoginBtn') || document.getElementById('adminLoginBtn-desktop');
+        const clientLoginBtn = document.getElementById('clientLoginBtn') || document.getElementById('clientLoginBtn-desktop');
         const adminLoginModal = document.getElementById('adminLoginModal');
         const clientLoginModal = document.getElementById('clientLoginModal');
         const closeAdminModal = document.getElementById('closeAdminModal');
@@ -84,22 +84,16 @@
             e.target.reset();
         });
 
-        // Mobile menu toggle
+        // Hamburger menu functionality
         const mobileToggle = document.querySelector('.mobile-toggle');
         const navLinks = document.querySelector('.nav-links');
         const navbarAuth = document.querySelector('.navbar-auth');
+        const navAuthMobile = document.querySelector('.nav-auth-mobile');
 
         mobileToggle.addEventListener('click', () => {
-            navLinks.style.display = navLinks.style.display === 'flex' ? 'none' : 'flex';
-            navbarAuth.style.display = navbarAuth.style.display === 'flex' ? 'none' : 'flex';
-            
-            if (navLinks.style.display === 'flex') {
-                navLinks.classList.add('mobile-menu');
-                navbarAuth.classList.add('mobile-menu');
-            } else {
-                navLinks.classList.remove('mobile-menu');
-                navbarAuth.classList.remove('mobile-menu');
-            }
+            mobileToggle.classList.toggle('active');
+            navLinks.classList.toggle('mobile-menu');
+            if (navAuthMobile) navAuthMobile.classList.toggle('mobile-menu');
         });
 
         // Scroll animation
