@@ -1,4 +1,4 @@
-/* Modal Styles */
+   /* Modal Styles */
         .modal {
             display: none;
             position: fixed;
@@ -28,7 +28,6 @@
                 opacity: 0;
                 transform: translateY(-50px);
             }
-
             to {
                 opacity: 1;
                 transform: translateY(0);
@@ -58,121 +57,4 @@
             display: flex;
             margin-bottom: 1.5rem;
             gap: 1rem;
-        }
-
-        /* Responsive Media Queries */
-
-        /* Mobile Devices – 320px — 480px */
-        @media (max-width: 480px) {
-            .modal-content {
-                width: 98%;
-                max-width: 98vw;
-                padding: 1rem;
-            }
-            .close {
-                top: 0.7rem;
-                right: 1rem;
-                font-size: 1.3rem;
-            }
-            .modal h2 {
-                font-size: 1.1rem;
-                margin-bottom: 1rem;
-            }
-            #clientModalTabs {
-                flex-direction: column;
-                gap: 0.5rem;
-                margin-bottom: 1rem;
-            }
-        }
-
-        /* iPads and Tablets – 481px — 768px */
-        @media (min-width: 481px) and (max-width: 768px) {
-            .modal-content {
-                width: 95%;
-                max-width: 400px;
-                padding: 1.5rem;
-            }
-            .close {
-                top: 0.8rem;
-                right: 1.2rem;
-                font-size: 1.5rem;
-            }
-            .modal h2 {
-                font-size: 1.3rem;
-                margin-bottom: 1.2rem;
-            }
-            #clientModalTabs {
-                flex-direction: row;
-                gap: 0.7rem;
-                margin-bottom: 1.2rem;
-            }
-        }
-
-        /* Laptops and small screen – 769px — 1024px */
-        @media (min-width: 769px) and (max-width: 1024px) {
-            .modal-content {
-                width: 90%;
-                max-width: 450px;
-                padding: 1.8rem;
-            }
-            .close {
-                top: 1rem;
-                right: 1.3rem;
-                font-size: 1.6rem;
-            }
-            .modal h2 {
-                font-size: 1.5rem;
-                margin-bottom: 1.3rem;
-            }
-            #clientModalTabs {
-                flex-direction: row;
-                gap: 0.9rem;
-                margin-bottom: 1.3rem;
-            }
-        }
-
-        /* Large screens and Desktops – 1025px — 1200px */
-        @media (min-width: 1025px) and (max-width: 1200px) {
-            .modal-content {
-                width: 80%;
-                max-width: 500px;
-                padding: 2rem;
-            }
-            .close {
-                top: 1rem;
-                right: 1.5rem;
-                font-size: 1.8rem;
-            }
-            .modal h2 {
-                font-size: 1.7rem;
-                margin-bottom: 1.5rem;
-            }
-            #clientModalTabs {
-                flex-direction: row;
-                gap: 1rem;
-                margin-bottom: 1.5rem;
-            }
-        }
-
-        /* TV and Extra Large Screens – 1201px and more */
-        @media (min-width: 1201px) {
-            .modal-content {
-                width: 60%;
-                max-width: 600px;
-                padding: 2.5rem;
-            }
-            .close {
-                top: 1.2rem;
-                right: 2rem;
-                font-size: 2rem;
-            }
-            .modal h2 {
-                font-size: 2rem;
-                margin-bottom: 2rem;
-            }
-            #clientModalTabs {
-                flex-direction: row;
-                gap: 1.2rem;
-                margin-bottom: 2rem;
-            }
         }
