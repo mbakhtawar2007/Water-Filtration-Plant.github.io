@@ -1,10 +1,11 @@
 // Demo data for clients, orders, finance, and delivery logs
+    // Add phone numbers to clients data
     const clients = [
-    {id: 1, name: 'Sarah Johnson', email: 'sarah@email.com', status: 'Pending', nic: 'nic1.jpg', address: '123 Waterfront Dr, Colombo', location: '12.34, 45.67' },
-    {id: 2, name: 'Michael Chen', email: 'michael@email.com', status: 'Active', nic: 'nic2.jpg', address: '456 Ocean Ave, Galle', location: '23.45, 56.78' },
-    {id: 3, name: 'Amina Hassan', email: 'amina@email.com', status: 'Deactivated', nic: 'nic3.jpg', address: '789 River Rd, Kandy', location: '34.56, 67.89' },
-    {id: 4, name: 'James Wilson', email: 'james@email.com', status: 'Active', nic: 'nic4.jpg', address: '101 Mountain View, Nuwara Eliya', location: '45.67, 78.90' },
-    {id: 5, name: 'Emma Rodriguez', email: 'emma@email.com', status: 'Pending', nic: 'nic5.jpg', address: '202 Lake Side, Negombo', location: '56.78, 89.01' }
+    {id: 1, name: 'Sarah Johnson', email: 'sarah@email.com', phone: '+94 71 123 4567', status: 'Pending', nic: 'nic1.jpg', address: '123 Waterfront Dr, Colombo', location: '12.34, 45.67' },
+    {id: 2, name: 'Michael Chen', email: 'michael@email.com', phone: '+94 72 234 5678', status: 'Active', nic: 'nic2.jpg', address: '456 Ocean Ave, Galle', location: '23.45, 56.78' },
+    {id: 3, name: 'Amina Hassan', email: 'amina@email.com', phone: '+94 73 345 6789', status: 'Deactivated', nic: 'nic3.jpg', address: '789 River Rd, Kandy', location: '34.56, 67.89' },
+    {id: 4, name: 'James Wilson', email: 'james@email.com', phone: '+94 74 456 7890', status: 'Active', nic: 'nic4.jpg', address: '101 Mountain View, Nuwara Eliya', location: '45.67, 78.90' },
+    {id: 5, name: 'Emma Rodriguez', email: 'emma@email.com', phone: '+94 75 567 8901', status: 'Pending', nic: 'nic5.jpg', address: '202 Lake Side, Negombo', location: '56.78, 89.01' }
     ];
 
     const orders = [
@@ -93,28 +94,28 @@
             <tr>
                 <th>Name</th>
                 <th>Email</th>
+                <th>Phone</th>
                 <th>Status</th>
                 <th>NIC</th>
                 <th>Actions</th>
             </tr>
         </thead>
         <tbody>`;
-
-            clients.forEach(c => {
-                html += `<tr>
-                    <td>${c.name}</td>
-                    <td>${c.email}</td>
-                    <td><span class="status-badge status-${c.status.toLowerCase()}">${c.status}</span></td>
-                    <td><button class="btn-action btn-view" onclick="viewNIC('${c.nic}', '${c.name}')"><i class="fas fa-eye"></i> View</button></td>
-                    <td>
-                        <button class="btn-action btn-approve" onclick="updateClientStatus(${c.id}, 'Active')"><i class="fas fa-check"></i> Approve</button>
-                        <button class="btn-action btn-reject" onclick="updateClientStatus(${c.id}, 'Rejected')"><i class="fas fa-times"></i> Reject</button>
-                        <button class="btn-action btn-deactivate" onclick="updateClientStatus(${c.id}, 'Deactivated')"><i class="fas fa-ban"></i> Deactivate</button>
-                    </td>
-                </tr>`;
-            });
-
-            html += `</tbody></table>`;
+    clients.forEach(c => {
+        html += `<tr>
+            <td>${c.name}</td>
+            <td>${c.email}</td>
+            <td>${c.phone}</td>
+            <td><span class="status-badge status-${c.status.toLowerCase()}">${c.status}</span></td>
+            <td><button class="btn-action btn-view" onclick="viewNIC('${c.nic}', '${c.name}')"><i class="fas fa-eye"></i> View</button></td>
+            <td>
+                <button class="btn-action btn-approve" onclick="updateClientStatus(${c.id}, 'Active')"><i class="fas fa-check"></i> Approve</button>
+                <button class="btn-action btn-reject" onclick="updateClientStatus(${c.id}, 'Rejected')"><i class="fas fa-times"></i> Reject</button>
+                <button class="btn-action btn-deactivate" onclick="updateClientStatus(${c.id}, 'Deactivated')"><i class="fas fa-ban"></i> Deactivate</button>
+            </td>
+        </tr>`;
+    });
+    html += `</tbody></table>`;
     document.getElementById('clientTableWrap').innerHTML = html;
         }
 
@@ -189,21 +190,22 @@
                 <th>Bottles Pending</th>
                 <th>Payments Pending</th>
                 <th>Payments Received</th>
+                <th>History</th>
             </tr>
         </thead>
         <tbody>`;
-
-            finance.forEach(f => {
-                html += `<tr>
-                    <td>${f.client}</td>
-                    <td>${f.total}</td>
-                    <td>${f.pending}</td>
-                    <td>${f.paymentPending}</td>
-                    <td>${f.received}</td>
-                </tr>`;
-            });
-
-            html += `</tbody></table>`;
+    finance.forEach(f => {
+        const clientObj = clients.find(c => c.name === f.client);
+        html += `<tr>
+            <td>${f.client}</td>
+            <td>${f.total}</td>
+            <td>${f.pending}</td>
+            <td>${f.paymentPending}</td>
+            <td>${f.received}</td>
+            <td><button class="btn-action btn-view" onclick="viewClientHistory(${clientObj ? clientObj.id : 0})"><i class="fas fa-history"></i> History</button></td>
+        </tr>`;
+    });
+    html += `</tbody></table>`;
     document.getElementById('financeTableWrap').innerHTML = html;
         }
 
@@ -244,6 +246,48 @@
     document.querySelector('#locationModal .modal-body p:nth-child(3)').innerHTML = `<strong>Coordinates:</strong> ${location}`;
     openModal(locationModal);
         }
+
+    // Modal for client history
+let clientHistoryModal = document.getElementById('clientHistoryModal');
+if (!clientHistoryModal) {
+    clientHistoryModal = document.createElement('div');
+    clientHistoryModal.className = 'modal';
+    clientHistoryModal.id = 'clientHistoryModal';
+    clientHistoryModal.innerHTML = `
+        <div class="modal-content modal-body">
+            <span class="close-modal" id="closeClientHistoryModal">&times;</span>
+            <h3>Client History</h3>
+            <div id="clientHistoryContent"></div>
+        </div>
+    `;
+    document.body.appendChild(clientHistoryModal);
+    document.getElementById('closeClientHistoryModal').onclick = function() {
+        clientHistoryModal.style.display = 'none';
+        document.body.style.overflow = 'auto';
+    };
+}
+function viewClientHistory(clientId) {
+    const client = clients.find(c => c.id === clientId);
+    if (!client) return;
+    let historyHtml = `<p><strong>Name:</strong> ${client.name}</p>
+        <p><strong>Email:</strong> ${client.email}</p>
+        <p><strong>Phone:</strong> ${client.phone}</p>
+        <p><strong>Address:</strong> ${client.address}</p>
+        <h4>Order History:</h4>`;
+    const clientOrders = orders.filter(o => o.client === client.name);
+    if (clientOrders.length === 0) {
+        historyHtml += '<p>No orders found.</p>';
+    } else {
+        historyHtml += '<ul>';
+        clientOrders.forEach(o => {
+            historyHtml += `<li>Order #${o.id} - ${o.date} - ${o.status} - ${o.bottles} bottles - Payment: ${o.payment}</li>`;
+        });
+        historyHtml += '</ul>';
+    }
+    document.getElementById('clientHistoryContent').innerHTML = historyHtml;
+    clientHistoryModal.style.display = 'flex';
+    document.body.style.overflow = 'hidden';
+}
 
     // Simulate real-time updates
     function simulateRealTimeUpdates() {
