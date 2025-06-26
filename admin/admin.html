@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Panel - Aabe Hasher</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="../css/admin.css">
+</head>
+
+<body>
+    <header class="admin-header">
+        <h1><i class="fas fa-tachometer-alt"></i> Admin Dashboard</h1>
+        <nav>
+            <ul>
+                <li><a href="#clients" class="active"><i class="fas fa-users"></i> Clients</a></li>
+                <li><a href="#orders"><i class="fas fa-shopping-cart"></i> Orders</a></li>
+                <li><a href="#finance"><i class="fas fa-chart-line"></i> Finance</a></li>
+                <li><a href="#delivery"><i class="fas fa-truck"></i> Delivery Logs</a></li>
+                <li><a href="#" id="logoutBtn"><i class="fas fa-sign-out-alt"></i> Logout</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <div class="dashboard-stats">
+            <div class="stat-card clients">
+                <div class="stat-value">32</div>
+                <div class="stat-title">Total Clients</div>
+                <div class="stat-icon"><i class="fas fa-users"></i></div>
+            </div>
+            <div class="stat-card orders">
+                <div class="stat-value">24</div>
+                <div class="stat-title">Active Orders</div>
+                <div class="stat-icon"><i class="fas fa-shopping-cart"></i></div>
+            </div>
+            <div class="stat-card finance">
+                <div class="stat-value">$8,240</div>
+                <div class="stat-title">Monthly Revenue</div>
+                <div class="stat-icon"><i class="fas fa-chart-line"></i></div>
+            </div>
+            <div class="stat-card delivery">
+                <div class="stat-value">98%</div>
+                <div class="stat-title">On-time Delivery</div>
+                <div class="stat-icon"><i class="fas fa-truck"></i></div>
+            </div>
+        </div>
+
+        <section id="clients" class="section">
+            <div class="section-header">
+                <h2><i class="fas fa-users"></i> Manage Client Registrations</h2>
+                <div class="controls">
+                    <div class="search-box">
+                        <i class="fas fa-search"></i>
+                        <input type="text" id="clientSearch" placeholder="Search clients...">
+                    </div>
+                    <button class="filter-btn">
+                        <i class="fas fa-filter"></i> Filter
+                    </button>
+                </div>
+            </div>
+            <div class="table-container">
+                <div id="clientTableWrap"></div>
+            </div>
+        </section>
+
+        <section id="orders" class="section">
+            <div class="section-header">
+                <h2><i class="fas fa-shopping-cart"></i> Manage Orders</h2>
+                <div class="controls">
+                    <div class="search-box">
+                        <i class="fas fa-search"></i>
+                        <input type="text" id="orderSearch" placeholder="Search orders...">
+                    </div>
+                    <button class="filter-btn">
+                        <i class="fas fa-filter"></i> Filter
+                    </button>
+                </div>
+            </div>
+            <div class="table-container">
+                <div id="orderTableWrap"></div>
+            </div>
+        </section>
+
+        <section id="finance" class="section">
+            <div class="section-header">
+                <h2><i class="fas fa-chart-line"></i> Financial Overview</h2>
+                <div class="controls">
+                    <div class="search-box">
+                        <i class="fas fa-search"></i>
+                        <input type="text" id="financeSearch" placeholder="Search financials...">
+                    </div>
+                </div>
+            </div>
+            <div class="table-container">
+                <div id="financeTableWrap"></div>
+            </div>
+        </section>
+
+        <section id="delivery" class="section">
+            <div class="section-header">
+                <h2><i class="fas fa-truck"></i> Delivery Time Logs & Logistics</h2>
+                <div class="controls">
+                    <div class="search-box">
+                        <i class="fas fa-search"></i>
+                        <input type="text" id="deliverySearch" placeholder="Search deliveries...">
+                    </div>
+                </div>
+            </div>
+            <div class="table-container">
+                <div id="deliveryTableWrap"></div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Modal for NIC Image -->
+    <div id="nicModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Client NIC Document</h3>
+                <button class="close-modal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80"
+                    alt="NIC Document" class="modal-image">
+                <p><strong>Client:</strong> Sarah Johnson</p>
+                <p><strong>NIC Number:</strong> 123456789V</p>
+                <p><strong>Status:</strong> <span class="status-badge status-pending">Pending</span></p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal for Location -->
+    <div id="locationModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Delivery Location</h3>
+                <button class="close-modal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <p><strong>Client:</strong> Sarah Johnson</p>
+                <p><strong>Address:</strong> 123 Waterfront Dr, Colombo</p>
+                <p><strong>Coordinates:</strong> 12.34, 45.67</p>
+
+                <div class="map-container">
+                    <div class="map-placeholder">
+                        <i class="fas fa-map-marked-alt"></i>
+                        <p>Interactive Map Integration</p>
+                        <small>In production, this would show Google Maps with the location</small>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="admin.js"></script>
+
+</body>
+
+</html>
