@@ -65,6 +65,11 @@ function renderClients() {
         <tbody>`;
 
     data.clients.forEach(client => {
+        // Disable buttons based on status
+        const isActive = client.status === 'Active';
+        const isPending = client.status === 'Pending';
+        const isDeactivated = client.status === 'Deactivated';
+        const isRejected = client.status === 'Rejected';
         html += `
             <tr>
                 <td>${client.name}</td>
@@ -73,9 +78,9 @@ function renderClients() {
                 <td><span class="status-badge status-${client.status.toLowerCase()}">${client.status}</span></td>
                 <td><button class="btn-action btn-view" data-action="view-nic" data-id="${client.id}"><i class="fas fa-eye"></i> View</button></td>
                 <td class="action-buttons">
-                    <button class="btn-action btn-approve" data-action="update-status" data-id="${client.id}" data-status="Active">Approve</button>
-                    <button class="btn-action btn-reject" data-action="update-status" data-id="${client.id}" data-status="Rejected">Reject</button>
-                    <button class="btn-action btn-deactivate" data-action="update-status" data-id="${client.id}" data-status="Deactivated">Deactivate</button>
+                    <button class="btn-action btn-approve" data-action="update-status" data-id="${client.id}" data-status="Active" ${isActive ? 'disabled' : ''}>Approve</button>
+                    <button class="btn-action btn-reject" data-action="update-status" data-id="${client.id}" data-status="Rejected" ${isRejected ? 'disabled' : ''}>Reject</button>
+                    <button class="btn-action btn-deactivate" data-action="update-status" data-id="${client.id}" data-status="Deactivated" ${isDeactivated ? 'disabled' : ''}>Deactivate</button>
                 </td>
             </tr>`;
     });
@@ -101,6 +106,8 @@ function renderOrders() {
         <tbody>`;
 
     data.orders.forEach(order => {
+        const isDispatched = order.status === 'Dispatched';
+        const isDelivered = order.status === 'Delivered';
         html += `
             <tr>
                 <td>${order.id}</td>
@@ -111,8 +118,8 @@ function renderOrders() {
                 <td>${order.deliveryTime || '-'}</td>
                 <td>${order.payment}</td>
                 <td class="action-buttons">
-                    <button class="btn-action btn-dispatch" data-action="update-order" data-id="${order.id}" data-status="Dispatched">Dispatch</button>
-                    <button class="btn-action btn-approve" data-action="update-order" data-id="${order.id}" data-status="Delivered">Deliver</button>
+                    <button class="btn-action btn-dispatch" data-action="update-order" data-id="${order.id}" data-status="Dispatched" ${isDispatched || isDelivered ? 'disabled' : ''}>Dispatch</button>
+                    <button class="btn-action btn-approve" data-action="update-order" data-id="${order.id}" data-status="Delivered" ${isDelivered ? 'disabled' : ''}>Deliver</button>
                 </td>
             </tr>`;
     });
@@ -218,9 +225,17 @@ function handleTableClick(e) {
 function viewNIC(clientId) {
     const client = data.clients.find(c => c.id === clientId);
     if (!client) return;
-
     elements.clientName.textContent = client.name;
     elements.nicNumber.textContent = client.nicNumber;
+    // Show NIC image if available
+    let nicImg = document.getElementById('nicImage');
+    if (!nicImg) {
+        nicImg = document.createElement('img');
+        nicImg.id = 'nicImage';
+        nicImg.style.maxWidth = '100%';
+        elements.nicNumber.parentNode.appendChild(nicImg);
+    }
+    nicImg.src = '../assets/' + client.nic;
     openModal(elements.nicModal);
 }
 
@@ -234,6 +249,11 @@ function viewLocation(client, address, location) {
 function updateClientStatus(clientId, status) {
     const client = data.clients.find(c => c.id === clientId);
     if (client) {
+        let confirmMsg = '';
+        if (status === 'Deactivated') confirmMsg = 'Are you sure you want to deactivate this client?';
+        if (status === 'Rejected') confirmMsg = 'Are you sure you want to reject this client?';
+        if (status === 'Active') confirmMsg = 'Approve this client?';
+        if (confirmMsg && !confirm(confirmMsg)) return;
         client.status = status;
         renderClients();
     }
@@ -242,6 +262,10 @@ function updateClientStatus(clientId, status) {
 function updateOrderStatus(orderId, status) {
     const order = data.orders.find(o => o.id === orderId);
     if (order) {
+        let confirmMsg = '';
+        if (status === 'Dispatched') confirmMsg = 'Dispatch this order?';
+        if (status === 'Delivered') confirmMsg = 'Mark this order as delivered?';
+        if (confirmMsg && !confirm(confirmMsg)) return;
         order.status = status;
         if (status === 'Delivered') {
             order.deliveryTime = new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
@@ -410,3 +434,12 @@ function initDashboard() {
 
 // Start dashboard when DOM is loaded
 document.addEventListener('DOMContentLoaded', initDashboard);
+
+document.addEventListener('keydown', function(e) {
+    // ESC to close any open modal
+    if (e.key === 'Escape') {
+        document.querySelectorAll('.modal').forEach(modal => {
+            if (modal.style.display === 'flex') closeModal(modal);
+        });
+    }
+});
