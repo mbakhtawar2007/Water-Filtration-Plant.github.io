@@ -8,7 +8,7 @@
     <link rel="icon" type="image/x-icon" href="./assets/Logo.ico">
     <meta name="description"
         content="Premium water delivery service with pure, refreshing water delivered to your doorstep in Mogadishu, Somalia">
-    <meta name="keywords" content="water delivery, premium water, bottled water, water dispenser, Mogadishu, Somalia">
+    <meta name="keywords" content="water delivery, premium water, bottled water, water dispenser, Mogadishu,
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="./css/style.css">
     <link rel="stylesheet" href="./css/header.css">
@@ -19,10 +19,6 @@
     <link rel="stylesheet" href="./css/contact.css">
     <link rel="stylesheet" href="./css/footer.css">
     <link rel="stylesheet" href="./css/modal.css">
-</head>
-
-
-
 </head>
 
 <body>
@@ -117,6 +113,37 @@
         </div>
     </div>
 
+    <!-- Service Request/Booking Modal -->
+    <div class="modal" id="bookingModal">
+        <div class="modal-content">
+            <span class="close" id="closeBookingModal">&times;</span>
+            <h2>Book a Service</h2>
+            <form id="bookingForm">
+                <div class="form-group">
+                    <label class="form-label">Name</label>
+                    <input type="text" class="form-input" id="bookingName" required>
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Email</label>
+                    <input type="email" class="form-input" id="bookingEmail" required>
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Service</label>
+                    <select class="form-input" id="bookingService" required>
+                        <option value="">Select a service</option>
+                        <option value="Home Delivery">Home Delivery</option>
+                        <option value="Office Supply">Office Supply</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Date</label>
+                    <input type="date" class="form-input" id="bookingDate" required>
+                </div>
+                <button type="submit" class="btn">Book Now</button>
+            </form>
+        </div>
+    </div>
+
     <!-- Hero Section -->
     <section class="hero" id="hero">
         <div class="hero-content">
@@ -200,11 +227,10 @@
                             <img src="./assets/Home-Delivery.jpg" alt="Home Delivery">
                         </div>
                         <div class="service-content">
-                            <h3 class="service-title">Home Delivery</h3>
-                            <p>Regular delivery of fresh water bottles to your home on a schedule that works for you.
-                            </p>
+                            <h3 class="service-title"><i class="fas fa-home"></i> Home Delivery <span class="badge best">Best Seller</span></h3>
+                            <p>Regular delivery of fresh water bottles to your home on a schedule that works for you.</p>
                             <div class="service-price">$2.50 <span>per bottle</span></div>
-                            <a href="#contact" class="btn">Schedule Delivery</a>
+                            <a href="#" class="btn btn-accent book-now-btn" data-service="Home Delivery">Book Now</a>
                         </div>
                     </div>
 
@@ -213,11 +239,10 @@
                             <img src="./assets/Office-Delivery.jpg" alt="Office Supply">
                         </div>
                         <div class="service-content">
-                            <h3 class="service-title">Office Supply</h3>
-                            <p>Customized water solutions for businesses of all sizes with flexible delivery options.
-                            </p>
+                            <h3 class="service-title"><i class="fas fa-building"></i> Office Supply <span class="badge new">New</span></h3>
+                            <p>Customized water solutions for businesses of all sizes with flexible delivery options.</p>
                             <div class="service-price">$2.25 <span>per bottle</span></div>
-                            <a href="#contact" class="btn">Request Quote</a>
+                            <a href="#" class="btn btn-accent book-now-btn" data-service="Office Supply">Book Now</a>
                         </div>
                     </div>
 
@@ -235,53 +260,95 @@
                     </div> -->
                 </div>
             </div>
+            <!-- Service Comparison Table -->
+            <div class="service-comparison animate-on-scroll">
+                <h3>Compare Our Services</h3>
+                <table>
+                    <thead>
+                        <tr><th>Feature</th><th>Home Delivery</th><th>Office Supply</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>Delivery Frequency</td><td>Flexible</td><td>Custom</td></tr>
+                        <tr><td>Price per Bottle</td><td>$2.50</td><td>$2.25</td></tr>
+                        <tr><td>Support</td><td>24/7</td><td>24/7</td></tr>
+                        <tr><td>Eco Program</td><td>Yes</td><td>Yes</td></tr>
+                    </tbody>
+                </table>
+            </div>
+            <!-- FAQ Accordion -->
+            <div class="faq-section animate-on-scroll">
+                <h3>Frequently Asked Questions</h3>
+                <div class="faq-item">
+                    <button class="faq-question">How do I schedule a delivery?</button>
+                    <div class="faq-answer">You can use the Book Now button above or contact us directly via the contact form.</div>
+                </div>
+                <div class="faq-item">
+                    <button class="faq-question">Can I change my delivery schedule?</button>
+                    <div class="faq-answer">Yes, simply contact our support team to update your schedule at any time.</div>
+                </div>
+                <div class="faq-item">
+                    <button class="faq-question">Do you offer bulk discounts?</button>
+                    <div class="faq-answer">Yes, we offer discounts for large orders. Please request a quote for details.</div>
+                </div>
+            </div>
+            <!-- Call-to-Action Banner -->
+            <div class="cta-banner animate-on-scroll">
+                <h2>Special Offer: Get 10% Off Your First Month!</h2>
+                <a href="#" class="btn btn-accent book-now-btn" data-service="Home Delivery">Claim Offer & Book Now</a>
+            </div>
         </section>
 
-        <!-- Testimonials Section -->
+        <!-- Testimonials Section (Carousel) -->
         <section id="testimonials" class="section testimonials">
             <h2 class="section-title">What Our Customers Say</h2>
-            <div class="testimonials-grid">
-                <div class="testimonial-card animate-on-scroll">
-                    <p class="testimonial-text">Aab-e-Hashir has been our water provider for over 3 years. Their service
-                        is reliable and the water quality is exceptional. Highly recommended!</p>
-                    <div class="testimonial-author">
-                        <div class="author-avatar">
-                            <img src="https://randomuser.me/api/portraits/women/45.jpg" alt="Sarah Johnson">
+            <div class="testimonials-carousel">
+                <button class="carousel-btn left" id="testimonialPrev"><i class="fas fa-chevron-left"></i></button>
+                <div class="testimonials-grid" id="testimonialsGrid">
+                    <div class="testimonial-card animate-on-scroll">
+                        <p class="testimonial-text">Aab-e-Hashir has been our water provider for over 3 years. Their service is reliable and the water quality is exceptional. Highly recommended!</p>
+                        <div class="testimonial-author">
+                            <div class="author-avatar">
+                                <img src="https://randomuser.me/api/portraits/women/45.jpg" alt="Sarah Johnson">
+                            </div>
+                            <div class="author-info">
+                                <h4>Sarah Johnson</h4>
+                                <p>Residential Customer</p>
+                                <span class="testimonial-rating">★★★★★</span>
+                            </div>
                         </div>
-                        <div class="author-info">
-                            <h4>Sarah Johnson</h4>
-                            <p>Residential Customer</p>
+                    </div>
+                    <div class="testimonial-card animate-on-scroll">
+                        <p class="testimonial-text">We switched to Aab-e-Hashir for our office water supply and couldn't be happier. The delivery is always on time and their customer service is excellent.</p>
+                        <div class="testimonial-author">
+                            <div class="author-avatar">
+                                <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Michael Chen">
+                            </div>
+                            <div class="author-info">
+                                <h4>Michael Chen</h4>
+                                <p>Business Customer</p>
+                                <span class="testimonial-rating">★★★★★</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="testimonial-card animate-on-scroll">
+                        <p class="testimonial-text">The taste of Aab-e-Hashir water is noticeably better than other brands we've tried. Their eco-friendly bottle exchange program is also a big plus for us.</p>
+                        <div class="testimonial-author">
+                            <div class="author-avatar">
+                                <img src="https://randomuser.me/api/portraits/women/68.jpg" alt="Amina Hassan">
+                            </div>
+                            <div class="author-info">
+                                <h4>Amina Hassan</h4>
+                                <p>Family Customer</p>
+                                <span class="testimonial-rating">★★★★★</span>
+                            </div>
                         </div>
                     </div>
                 </div>
-
-                <div class="testimonial-card animate-on-scroll">
-                    <p class="testimonial-text">We switched to Aab-e-Hashir for our office water supply and couldn't be
-                        happier. The delivery is always on time and their customer service is excellent.</p>
-                    <div class="testimonial-author">
-                        <div class="author-avatar">
-                            <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Michael Chen">
-                        </div>
-                        <div class="author-info">
-                            <h4>Michael Chen</h4>
-                            <p>Business Customer</p>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="testimonial-card animate-on-scroll">
-                    <p class="testimonial-text">The taste of Aab-e-Hashir water is noticeably better than other brands
-                        we've tried. Their eco-friendly bottle exchange program is also a big plus for us.</p>
-                    <div class="testimonial-author">
-                        <div class="author-avatar">
-                            <img src="https://randomuser.me/api/portraits/women/68.jpg" alt="Amina Hassan">
-                        </div>
-                        <div class="author-info">
-                            <h4>Amina Hassan</h4>
-                            <p>Family Customer</p>
-                        </div>
-                    </div>
-                </div>
+                <button class="carousel-btn right" id="testimonialNext"><i class="fas fa-chevron-right"></i></button>
+            </div>
+            <div class="testimonial-cta animate-on-scroll">
+                <h3>Share your experience with Aab-e-Hashir!</h3>
+                <a href="#contact" class="btn btn-outline">Leave a Review</a>
             </div>
         </section>
 
@@ -417,6 +484,9 @@
             </div>
         </div>
     </footer>
+
+    <!-- Notification/Alert System -->
+    <div id="siteNotification" class="site-notification"></div>
 
     <script src="script.js"></script>
 </body>

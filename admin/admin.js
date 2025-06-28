@@ -46,7 +46,8 @@ const elements = {
     nicNumber: document.getElementById('nicNumber'),
     locationClient: document.getElementById('locationClient'),
     deliveryAddress: document.getElementById('deliveryAddress'),
-    coordinates: document.getElementById('coordinates')
+    coordinates: document.getElementById('coordinates'),
+    clientSearchInput: document.getElementById('clientSearchInput')
 };
 
 // Render Functions
@@ -191,6 +192,34 @@ function renderDeliveryLogs() {
     elements.deliveryTableWrap.innerHTML = html;
 }
 
+// --- Notification System for Admin ---
+function showAdminNotification(message, type = 'info', duration = 3000) {
+    let notification = document.getElementById('adminNotification');
+    if (!notification) {
+        notification = document.createElement('div');
+        notification.id = 'adminNotification';
+        notification.className = 'admin-notification';
+        document.body.appendChild(notification);
+    }
+    notification.textContent = message;
+    notification.className = `admin-notification ${type}`;
+    notification.style.display = 'block';
+    setTimeout(() => {
+        notification.style.display = 'none';
+    }, duration);
+}
+
+// --- Search/Filter for Clients ---
+if (elements.clientSearchInput) {
+    elements.clientSearchInput.addEventListener('input', function () {
+        const query = this.value.trim().toLowerCase();
+        const rows = document.querySelectorAll('#clientTableWrap table tbody tr');
+        rows.forEach(row => {
+            row.style.display = row.textContent.toLowerCase().includes(query) ? '' : 'none';
+        });
+    });
+}
+
 // Event Handlers
 function handleTableClick(e) {
     const btn = e.target.closest('.btn-action');
@@ -256,6 +285,7 @@ function updateClientStatus(clientId, status) {
         if (confirmMsg && !confirm(confirmMsg)) return;
         client.status = status;
         renderClients();
+        showAdminNotification(`Client status updated to ${status}.`, 'success');
     }
 }
 
@@ -271,6 +301,7 @@ function updateOrderStatus(orderId, status) {
             order.deliveryTime = new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
         }
         renderOrders();
+        showAdminNotification(`Order status updated to ${status}.`, 'success');
     }
 }
 

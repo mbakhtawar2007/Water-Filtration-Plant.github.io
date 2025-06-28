@@ -533,6 +533,40 @@ main {
     margin-bottom: 1rem;
 }
 
+.client-toolbar {
+    margin-bottom: 1rem;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.client-search-input {
+    padding: 0.5rem 1rem;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 1rem;
+    width: 220px;
+}
+
+.client-notification {
+    display: none;
+    position: fixed;
+    top: 1.5rem;
+    left: 50%;
+    transform: translateX(-50%);
+    background: #007bff;
+    color: #fff;
+    padding: 1rem 2rem;
+    border-radius: 6px;
+    z-index: 9999;
+    font-size: 1rem;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    transition: opacity 0.3s;
+}
+
+.client-notification.success { background: #28a745; }
+.client-notification.error { background: #dc3545; }
+.client-notification.warning { background: #ffc107; color: #333; }
+
 @media (max-width: 1100px) {
     .client-nav-links {
         position: fixed;

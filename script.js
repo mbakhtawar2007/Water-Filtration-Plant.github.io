@@ -220,4 +220,125 @@ document.addEventListener('DOMContentLoaded', function () {
             btn.classList.add('visible');
         });
     });
+
+    // --- Site-wide Notification System ---
+    function showNotification(message, type = 'info', duration = 3000) {
+        const notification = document.getElementById('siteNotification');
+        if (!notification) return;
+        notification.textContent = message;
+        notification.className = `site-notification ${type}`;
+        notification.style.display = 'block';
+        setTimeout(() => {
+            notification.style.display = 'none';
+        }, duration);
+    }
+
+    // --- Search Functionality ---
+    const siteSearchForm = document.getElementById('siteSearchForm');
+    if (siteSearchForm) {
+        siteSearchForm.addEventListener('submit', function (e) {
+            e.preventDefault();
+            const query = document.getElementById('siteSearchInput').value.trim().toLowerCase();
+            if (!query) {
+                showNotification('Please enter a search term.', 'warning');
+                return;
+            }
+            // Simple search: highlight sections containing the query
+            let found = false;
+            document.querySelectorAll('section, main, .section').forEach(section => {
+                if (section.textContent.toLowerCase().includes(query)) {
+                    section.style.outline = '2px solid #007bff';
+                    found = true;
+                } else {
+                    section.style.outline = '';
+                }
+            });
+            if (found) {
+                showNotification(`Results found for "${query}"`, 'success');
+            } else {
+                showNotification(`No results found for "${query}"`, 'error');
+            }
+        });
+    }
+
+    // --- Booking Modal Functionality ---
+    const bookingModal = document.getElementById('bookingModal');
+    const closeBookingModal = document.getElementById('closeBookingModal');
+    const bookingForm = document.getElementById('bookingForm');
+    document.querySelectorAll('.btn, .service-card .btn').forEach(btn => {
+        if (btn.textContent.includes('Schedule') || btn.textContent.includes('Request')) {
+            btn.addEventListener('click', function (e) {
+                if (bookingModal) {
+                    e.preventDefault();
+                    bookingModal.style.display = 'flex';
+                }
+            });
+        }
+    });
+    if (closeBookingModal) {
+        closeBookingModal.addEventListener('click', () => {
+            bookingModal.style.display = 'none';
+        });
+    }
+    window.addEventListener('click', (e) => {
+        if (e.target === bookingModal) {
+            bookingModal.style.display = 'none';
+        }
+    });
+    if (bookingForm) {
+        bookingForm.addEventListener('submit', function (e) {
+            e.preventDefault();
+            showNotification('Your booking request has been submitted!', 'success');
+            bookingModal.style.display = 'none';
+            bookingForm.reset();
+        });
+    }
+
+    // --- Testimonials Carousel ---
+    const testimonials = [
+        {
+            text: 'Aab-e-Hashir has been our water provider for over 3 years. Their service is reliable and the water quality is exceptional. Highly recommended!',
+            author: 'Sarah Johnson',
+            role: 'Residential Customer',
+            avatar: 'https://randomuser.me/api/portraits/women/45.jpg'
+        },
+        {
+            text: 'We switched to Aab-e-Hashir for our office water supply and couldn\'t be happier. The delivery is always on time and their customer service is excellent.',
+            author: 'Michael Chen',
+            role: 'Business Customer',
+            avatar: 'https://randomuser.me/api/portraits/men/32.jpg'
+        },
+        {
+            text: 'The taste of Aab-e-Hashir water is noticeably better than other brands we\'ve tried. Their eco-friendly bottle exchange program is also a big plus for us.',
+            author: 'Amina Hassan',
+            role: 'Family Customer',
+            avatar: 'https://randomuser.me/api/portraits/women/68.jpg'
+        }
+    ];
+    let testimonialIndex = 0;
+    const testimonialsGrid = document.getElementById('testimonialsGrid');
+    const testimonialPrev = document.getElementById('testimonialPrev');
+    const testimonialNext = document.getElementById('testimonialNext');
+    function renderTestimonial(idx) {
+        if (!testimonialsGrid) return;
+        const t = testimonials[idx];
+        testimonialsGrid.innerHTML = `
+            <div class="testimonial-card animate-on-scroll">
+                <p class="testimonial-text">${t.text}</p>
+                <div class="testimonial-author">
+                    <div class="author-avatar"><img src="${t.avatar}" alt="${t.author}"></div>
+                    <div class="author-info"><h4>${t.author}</h4><p>${t.role}</p></div>
+                </div>
+            </div>
+        `;
+    }
+    if (testimonialsGrid) renderTestimonial(testimonialIndex);
+    if (testimonialPrev) testimonialPrev.addEventListener('click', () => {
+        testimonialIndex = (testimonialIndex - 1 + testimonials.length) % testimonials.length;
+        renderTestimonial(testimonialIndex);
+    });
+    if (testimonialNext) testimonialNext.addEventListener('click', () => {
+        testimonialIndex = (testimonialIndex + 1) % testimonials.length;
+        renderTestimonial(testimonialIndex);
+    });
 });

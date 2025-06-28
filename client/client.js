@@ -154,4 +154,33 @@ document.addEventListener('DOMContentLoaded', function () {
             }
         });
     }
+
+    // --- Notification System for Client ---
+    function showClientNotification(message, type = 'info', duration = 3000) {
+        let notification = document.getElementById('clientNotification');
+        if (!notification) {
+            notification = document.createElement('div');
+            notification.id = 'clientNotification';
+            notification.className = 'client-notification';
+            document.body.appendChild(notification);
+        }
+        notification.textContent = message;
+        notification.className = `client-notification ${type}`;
+        notification.style.display = 'block';
+        setTimeout(() => {
+            notification.style.display = 'none';
+        }, duration);
+    }
+
+    // --- Order Search/Filter ---
+    const orderSearchInput = document.getElementById('orderSearchInput');
+    if (orderSearchInput) {
+        orderSearchInput.addEventListener('input', function () {
+            const query = this.value.trim().toLowerCase();
+            const rows = document.querySelectorAll('#ordersTable tbody tr');
+            rows.forEach(row => {
+                row.style.display = row.textContent.toLowerCase().includes(query) ? '' : 'none';
+            });
+        });
+    }
 });
