@@ -117,6 +117,8 @@ document.addEventListener('DOMContentLoaded', function () {
             if (email && password) {
                 alert(`Welcome back! You're now logged in as ${email}`);
                 clientLoginModal.style.display = 'none';
+                // Redirect to client dashboard
+                window.location.href = './client.html';
             } else {
                 alert('Please enter both email and password');
             }

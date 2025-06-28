@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Client Dashboard - Aab-e-Hashir</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="../css/client.css">
+    <link rel="icon"
+        href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>💧</text></svg>">
+
+</head>
+
+<body>
+    <header class="client-header">
+        <div class="logo">
+            <div style="font-size: 2rem;">💧</div>
+            <span>Aab-e-Hashir</span>
+        </div>
+        <nav class="client-nav-links">
+            <a href="#orders" class="active"><i class="fas fa-box"></i> My Orders</a>
+            <a href="#finance"><i class="fas fa-chart-line"></i> Finance</a>
+            <a href="#delivery"><i class="fas fa-truck"></i> Delivery Logs</a>
+            <a href="#profile"><i class="fas fa-user"></i> Profile</a>
+            <a href="#" id="logoutBtn"><i class="fas fa-sign-out-alt"></i> Logout</a>
+        </nav>
+        <button class="client-mobile-toggle" aria-label="Toggle navigation" aria-expanded="false">
+            <span></span><span></span><span></span>
+        </button>
+    </header>
+
+    <main>
+        <div class="dashboard-header">
+            <h1 class="dashboard-title">Client Dashboard</h1>
+            <div class="header-actions">
+                <button class="btn btn-primary" id="newOrderBtn">
+                    <i class="fas fa-plus"></i> Place New Order
+                </button>
+            </div>
+        </div>
+
+        <div class="welcome-card">
+            <div class="welcome-content">
+                <h1>Welcome back, Sarah!</h1>
+                <p>Track your water orders, manage payments, and view delivery history all in one place. Your last
+                    delivery was on June 25, 2025.</p>
+                <button class="btn btn-secondary">
+                    <i class="fas fa-question-circle"></i> Help Center
+                </button>
+            </div>
+            <div style="background: #e6f7ff; border-radius: 12px; padding: 1.5rem; min-width: 280px;">
+                <h3 style="color: var(--primary-dark); margin-bottom: 1rem;">Quick Stats</h3>
+                <div class="info-group">
+                    <div class="info-label">Total Orders:</div>
+                    <div class="info-value">2</div>
+                </div>
+                <div class="info-group">
+                    <div class="info-label">Pending Delivery:</div>
+                    <div class="info-value">5 bottles</div>
+                </div>
+                <div class="info-group">
+                    <div class="info-label">Account Status:</div>
+                    <div class="info-value" style="color: var(--success); font-weight: 600;">Active</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="stats-container">
+            <div class="stat-card">
+                <div class="stat-icon orders">
+                    <i class="fas fa-box-open"></i>
+                </div>
+                <div class="stat-content">
+                    <div class="stat-value">2</div>
+                    <div class="stat-label">Active Orders</div>
+                </div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-icon finance">
+                    <i class="fas fa-money-bill-wave"></i>
+                </div>
+                <div class="stat-content">
+                    <div class="stat-value">2</div>
+                    <div class="stat-label">Pending Payments</div>
+                </div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-icon delivery">
+                    <i class="fas fa-truck-loading"></i>
+                </div>
+                <div class="stat-content">
+                    <div class="stat-value">11</div>
+                    <div class="stat-label">Total Bottles</div>
+                </div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-icon profile">
+                    <i class="fas fa-user-check"></i>
+                </div>
+                <div class="stat-content">
+                    <div class="stat-value">Gold</div>
+                    <div class="stat-label">Membership Tier</div>
+                </div>
+            </div>
+        </div>
+
+        <section id="orders" class="dashboard-section">
+            <div class="section-header">
+                <h2 class="section-title"><i class="fas fa-box"></i> My Orders</h2>
+                <div>
+                    <button class="btn btn-outline">
+                        <i class="fas fa-download"></i> Export
+                    </button>
+                </div>
+            </div>
+            <div class="table-container">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>Order ID</th>
+                            <th>Date</th>
+                            <th>Status</th>
+                            <th>Bottles</th>
+                            <th>Delivery Time</th>
+                            <th>Payment</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>#101</td>
+                            <td>2025-06-25</td>
+                            <td><span class="status-badge status-pending">Pending</span></td>
+                            <td>5</td>
+                            <td>-</td>
+                            <td><span class="status-badge status-pending">Pending</span></td>
+                            <td>
+                                <button class="btn-action btn-track">
+                                    <i class="fas fa-map-marked-alt"></i> Track
+                                </button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>#106</td>
+                            <td>2025-06-20</td>
+                            <td><span class="status-badge status-delivered">Delivered</span></td>
+                            <td>6</td>
+                            <td>10:00 AM</td>
+                            <td><span class="status-badge status-delivered">Received</span></td>
+                            <td>
+                                <button class="btn-action btn-view">
+                                    <i class="fas fa-eye"></i> View
+                                </button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <section id="finance" class="dashboard-section">
+            <div class="section-header">
+                <h2 class="section-title"><i class="fas fa-chart-line"></i> Financial Overview</h2>
+                <button class="btn btn-primary">
+                    <i class="fas fa-credit-card"></i> Make Payment
+                </button>
+            </div>
+            <div class="table-container">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>Period</th>
+                            <th>Total Bottles</th>
+                            <th>Pending Bottles</th>
+                            <th>Payments Pending</th>
+                            <th>Payments Received</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>June 2025</td>
+                            <td>11</td>
+                            <td>5</td>
+                            <td>2</td>
+                            <td>1</td>
+                        </tr>
+                        <tr>
+                            <td>May 2025</td>
+                            <td>9</td>
+                            <td>0</td>
+                            <td>0</td>
+                            <td>2</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <section id="delivery" class="dashboard-section">
+            <div class="section-header">
+                <h2 class="section-title"><i class="fas fa-truck"></i> Delivery History</h2>
+                <button class="btn btn-outline">
+                    <i class="fas fa-history"></i> View All
+                </button>
+            </div>
+            <div class="table-container">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>Date</th>
+                            <th>Day</th>
+                            <th>Time</th>
+                            <th>Bottles</th>
+                            <th>Address</th>
+                            <th>Location</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>2025-06-25</td>
+                            <td>Wednesday</td>
+                            <td>11:00 AM</td>
+                            <td>5</td>
+                            <td>123 Waterfront Dr, Colombo</td>
+                            <td>
+                                <button class="btn-action btn-view" data-action="view-location">
+                                    <i class="fas fa-map-marker-alt"></i> View
+                                </button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>2025-06-20</td>
+                            <td>Friday</td>
+                            <td>10:00 AM</td>
+                            <td>6</td>
+                            <td>123 Waterfront Dr, Colombo</td>
+                            <td>
+                                <button class="btn-action btn-view" data-action="view-location">
+                                    <i class="fas fa-map-marker-alt"></i> View
+                                </button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <section id="profile" class="dashboard-section">
+            <div class="section-header">
+                <h2 class="section-title"><i class="fas fa-user"></i> My Profile</h2>
+                <button class="btn btn-primary">
+                    <i class="fas fa-edit"></i> Edit Profile
+                </button>
+            </div>
+            <div class="profile-card">
+                <div class="profile-info">
+                    <h3>Personal Information</h3>
+                    <div class="info-group">
+                        <div class="info-label">Full Name:</div>
+                        <div class="info-value">Sarah Johnson</div>
+                    </div>
+                    <div class="info-group">
+                        <div class="info-label">Email:</div>
+                        <div class="info-value">sarah@email.com</div>
+                    </div>
+                    <div class="info-group">
+                        <div class="info-label">Phone:</div>
+                        <div class="info-value">+94 71 123 4567</div>
+                    </div>
+                    <div class="info-group">
+                        <div class="info-label">Address:</div>
+                        <div class="info-value">123 Waterfront Dr, Colombo</div>
+                    </div>
+                    <div class="info-group">
+                        <div class="info-label">NIC Number:</div>
+                        <div class="info-value">123456789V</div>
+                    </div>
+                </div>
+                <div class="profile-stats">
+                    <h3 class="stats-title">Account Statistics</h3>
+                    <div class="stat-item">
+                        <span class="stat-name">Member Since</span>
+                        <span class="stat-value">Jan 2024</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-name">Total Orders</span>
+                        <span class="stat-value">12</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-name">Bottles Delivered</span>
+                        <span class="stat-value">86</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-name">Avg. Monthly</span>
+                        <span class="stat-value">14 bottles</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-name">Account Status</span>
+                        <span class="stat-value" style="color: var(--success);">Active</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <p>&copy; 2025 Aab-e-Hashir. Providing clean water for a healthier tomorrow.</p>
+        <p style="margin-top: 0.5rem; font-size: 0.9rem; opacity: 0.8;">Customer Support: +94 11 123 4567 |
+            support@aquapure.lk</p>
+    </footer>
+
+    <div id="locationModal" class="modal" aria-hidden="true">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Delivery Location</h3>
+                <button class="close-modal" aria-label="Close modal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <p><strong>Address:</strong> <span id="deliveryAddress">123 Waterfront Dr, Colombo</span></p>
+                <p><strong>Coordinates:</strong> <span id="coordinates">6.9271° N, 79.8612° E</span></p>
+
+                <div class="map-placeholder">
+                    <div style="text-align: center;">
+                        <i class="fas fa-map-marked-alt"></i>
+                        <p>Delivery Location Map</p>
+                    </div>
+                </div>
+
+                <p><strong>Delivery Status:</strong> <span style="color: var(--warning); font-weight: 600;">In
+                        Transit</span></p>
+                <p><strong>Estimated Arrival:</strong> Within 45 minutes</p>
+            </div>
+        </div>
+    </div>
+
+    <script src="./client.js"></script>
+    <script src="../script.js"></script>
+    <script>
+        document.getElementById('logoutBtn').addEventListener('click', function(e) {
+            e.preventDefault();
+            window.location.href = '../index.html';
+        });
+    </script>
+</body>
+
+</html>
